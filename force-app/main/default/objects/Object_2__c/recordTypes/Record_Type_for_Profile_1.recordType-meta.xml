@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Record_Type_for_Profile_1</fullName>
+    <active>true</active>
+    <label>Record Type for Profile 1</label>
+    <picklistValues>
+        <picklist>Field6__c</picklist>
+        <values>
+            <fullName>Value-6%2E1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Value-6%2E2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Value-6%2E3</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Field_1__c</picklist>
+        <values>
+            <fullName>Value-1%2E1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Value-1%2E3</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

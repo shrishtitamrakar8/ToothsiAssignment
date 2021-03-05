@@ -1,0 +1,78 @@
+<aura:component implements="force:appHostable" controller="toothsi">
+    
+    <!--Attributes start-->
+    <aura:attribute name="fields" type="String[]" default="['trialshrishti__Field_1__c', 'trialshrishti__Field2__c','trialshrishti__Field3__c','trialshrishti__Field4__c','trialshrishti__Field5__c','trialshrishti__Field6__c','trialshrishti__Field7__c','trialshrishti__Field8__c','trialshrishti__Field9__c']"/>
+	<aura:attribute name="newObject2" type="Object"/>
+    <aura:attribute name="simpleNewObject2" type="Object"/>
+    <aura:attribute name="newObject2Error" type="String"/>
+    <aura:attribute name="displayField2AndField3" type="Boolean" default="false"/>
+    <aura:attribute name="displayField4AndField5" type="Boolean" default="false"/>
+    <aura:attribute name="displayField6AndField7" type="Boolean" default="false"/>
+    <aura:attribute name="displayField6AndField8" type="Boolean" default="false"/>
+    <aura:attribute name="displayField9" type="Boolean" default="false"/>
+    <aura:attribute name="recordTypeId" type="String" default=""/>
+    <aura:attribute name="CurrentUser" type="Object"/>
+    <!--Attributes end-->
+    
+    <!--Aura Handlers start-->
+    <!--aura:handler name="init" value="{!this}" action="{!c.doInit}"/-->
+    <!--Aura Handlers end-->
+    
+    
+	<div>
+        <h1>Welcome to Toothsi</h1>
+    </div>
+    <br/>
+    <br/>
+    
+ 	<force:recordData recordId="{!$SObjectType.CurrentUser.Id}"
+                  fields="Profile.Name"
+                  targetFields="{!v.CurrentUser}"
+                      recordUpdated="{!c.doInit}"/>
+    
+    
+    <force:recordData aura:id="object2RecordAuraId" 
+                      fields="trialshrishti__Field_1__c, trialshrishti__Field2__c,trialshrishti__Field3__c,trialshrishti__Field4__c,trialshrishti__Field5__c,trialshrishti__Field6__c,trialshrishti__Field7__c,trialshrishti__Field8__c,trialshrishti__Field9__c,trialshrishti__Object_1__c"
+                      targetRecord="{!v.newObject2}"
+                      targetFields="{!v.simpleNewObject2}"
+                      targetError="{!v.newObject2Error}" />
+                      
+    <!-- Display the new Object2 form -->
+    <div >
+        <lightning:card class="iconSize" iconName="utility:smiley_and_people" title="Create Object2 Records">
+            <br/>
+            <lightning:recordEditForm aura:id="recordEditForm"
+                                      recordTypeId="{!v.recordTypeId}"
+                           objectApiName="trialshrishti__Object_2__c"
+                           onsubmit="{!c.onRecordSubmit}"
+                           onsuccess="{!c.onRecordSuccess}">
+                <lightning:messages />
+                <lightning:inputField fieldName="trialshrishti__Field_1__c" onchange="{!c.field1Change}"/>
+                <aura:if isTrue="{!v.displayField2AndField3}">
+                    <lightning:inputField fieldName="trialshrishti__Field2__c"/>
+                    <lightning:inputField fieldName="trialshrishti__Field3__c"/>
+                </aura:if>
+                <!--lightning:inputField fieldName="trialshrishti__Field3__c"/-->
+                <aura:if isTrue="{!v.displayField4AndField5}">
+                <lightning:inputField fieldName="trialshrishti__Field4__c"/>
+                <lightning:inputField fieldName="trialshrishti__Field5__c"/>
+                </aura:if>
+                <aura:if isTrue="{!v.displayField6AndField7}">
+                <lightning:inputField fieldName="trialshrishti__Field6__c" onchange="{!c.selectingField6Value}" aura:id="field6"/>
+                <lightning:inputField fieldName="trialshrishti__Field7__c"/>
+                </aura:if>
+                <aura:if isTrue="{!v.displayField6AndField8}">
+                    <lightning:inputField fieldName="trialshrishti__Field6__c" onchange="{!c.selectingField6Value}"/>
+                    <lightning:inputField fieldName="trialshrishti__Field8__c"/>
+                </aura:if>
+                <aura:if isTrue="{!v.displayField9}">
+                	<lightning:inputField fieldName="trialshrishti__Field9__c" onfocusout="{!c.field9FocusOut}" aura:id="field9"/>
+                </aura:if>
+                <lightning:button class="slds-m-top_small" type="submit" label="Create new" />
+            </lightning:recordEditForm>
+            
+            
+        </lightning:card>
+        <lightning:notificationsLibrary aura:id="notifLib"/>
+    </div>
+</aura:component>

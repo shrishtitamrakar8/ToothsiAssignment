@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>toothsiCustomLabel</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>toothsiCustomLabel</shortDescription>
+        <value>a0d0I00000VX0PvQAL</value>
+    </labels>
+</CustomLabels>
